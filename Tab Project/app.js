@@ -10,6 +10,12 @@ about.addEventListener('click', function(e){
             console.log(btn.classList);
             btn.classList.remove('active');
             e.target.classList.add('active');
+        });
+        // Hide other articles
+        articles.forEach(function(article){
+            article.classList.remove('active');
         })
+        const element = document.getElementById(id);
+        element.classList.add('active');
     }
 })
