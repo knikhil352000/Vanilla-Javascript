@@ -25,11 +25,15 @@ function addItem(e){
         attr.value = id;
         element.setAttributeNode(attr);
         element.innerHTML = `<p class="title">${value}</p>
-                            <div class="btn-container">
-                            <button type="button" class="edit-btn"><i class="fas fa-edit"></i></button>
-                            <button type="button" class="delete-btn"><i class="fas fa-trash"></i></button>
-                            </div>`;
-                            //append child
+            <div class="btn-container">
+            <button type="button" class="edit-btn"><i class="fas fa-edit"></i></button>
+            <button type="button" class="delete-btn"><i class="fas fa-trash"></i></button>
+            </div>`; 
+                
+        const deleteBtn = element.querySelector('.delete-btn');
+        const editBtn = element.querySelector('.edit-btn');
+        deleteBtn.addEventListener('click', deleteItem);
+        editBtn.addEventListener('click', editItem);
         list.appendChild(element);
         displayAlert('item added to list', 'success');
         //show container
@@ -67,6 +71,24 @@ function clearItems(){
     setBackToDefault();
 }
 
+//delete function
+
+function deleteItem(e){
+    const element = e.currentTarget.parentElement.parentElement;
+    list.removeChild(element);
+    if(list.children.length === 0){
+        container.classList.remove('show-container');
+    }
+    displayAlert('item removed', 'danger');
+    setBackToDefault();
+}
+
+//edit function
+
+function editItem(){
+
+}
+
 //set back to default
 
 function setBackToDefault(){
@@ -79,7 +101,7 @@ function setBackToDefault(){
 // ****** LOCAL STORAGE **********
 
 function addToLocalStorage(id, value){
-    
+    console.log('hello');
 }
 
 // ****** SETUP ITEMS **********
