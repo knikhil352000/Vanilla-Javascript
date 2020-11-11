@@ -44,8 +44,10 @@ function addItem(e){
         setBackToDefault();
 
     }else if(value !== '' && editFlag === true){
-
-
+        editElement.innerHTML = value;
+        displayAlert('value changed', 'success');
+        //editLocalStorage
+        setBackToDefault();
     }else{
         displayAlert('please enter value', 'danger')
     }
@@ -75,6 +77,7 @@ function clearItems(){
 
 function deleteItem(e){
     const element = e.currentTarget.parentElement.parentElement;
+    const id = element.dataset.id;
     list.removeChild(element);
     if(list.children.length === 0){
         container.classList.remove('show-container');
@@ -85,8 +88,14 @@ function deleteItem(e){
 
 //edit function
 
-function editItem(){
-
+function editItem(e){
+    const element = e.currentTarget.parentElement.parentElement;
+    //set edit item
+    editElement = e.currentTarget.parentElement.previousElementSibling;
+    grocery.value = editElement.innerHTML;
+    editFlag = true;
+    editID = element.dataset.id;
+    submitBtn.textContent = 'edit';
 }
 
 //set back to default
