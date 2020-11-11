@@ -46,7 +46,7 @@ function addItem(e){
     }else if(value !== '' && editFlag === true){
         editElement.innerHTML = value;
         displayAlert('value changed', 'success');
-        //editLocalStorage
+        editLocalStorage(editID, value);
         setBackToDefault();
     }else{
         displayAlert('please enter value', 'danger')
@@ -110,7 +110,23 @@ function setBackToDefault(){
 // ****** LOCAL STORAGE **********
 
 function addToLocalStorage(id, value){
-    console.log('hello');
+    const grocery = {
+        id: id,
+        value: value
+    };
+    let items = localStorage.getItem('list');
 }
+
+function removeFromLocalStorage(id){
+
+}
+
+function editLocalStorage(id, value){
+
+}
+
+// localStorage.setItem('orange', JSON.stringify(['item', 'item2']));
+// oranges = JSON.parse(localStorage.getItem('orange'));
+
 
 // ****** SETUP ITEMS **********
